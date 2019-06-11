@@ -13,21 +13,27 @@ public class Basket {
         this.list = new TreeMap<>();
     }
 
-    public int addToBasket(StockItem item, int quantity) {
-        if ((item != null) && (Math.abs(quantity) > 0) && Math.abs(quantity) <= item.quantityInStock()){
-            System.out.println("There are " + item.quantityInStock() +
-                    " " + item.getName() + "(s)" + " before reserving");
+    public int toOrFromBasket(StockItem item, int quantity) {
+        if ((item != null) && (quantity > 0) && (quantity <= item.quantityAvailable())) {
+            System.out.println("There are " + item.quantityAvailable() +
+                    " " + item.getName() + "(s) available" + " before reserving");
             int inBasket = list.getOrDefault(item, 0);
+            list.put(item, inBasket + quantity);
             item.reserveStock(quantity);
-            if(quantity > 0) {
-                list.put(item, inBasket + quantity);
-                System.out.println("There are " + item.quantityInStock() +
-                        " " + item.getName() + "(s)" + " after reserving");
-            } else {
-                list.remove(item, inBasket + quantity);
-            }
+            System.out.println("There are " + item.quantityAvailable() +
+                               " " + item.getName() + "(s) available " + " after reserving");
             return inBasket;
-        }
+        } else if( (item != null) && (quantity < 0)) {
+            int inBasket = list.getOrDefault(item, 0);
+            System.out.println("There are " + item.quantityAvailable() +
+                               " " + item.getName() + "(s) available" + " before removing");
+
+            list.remove(item, inBasket + quantity);
+            System.out.println("There are " + item.quantityAvailable() +
+                               " " + item.getName() + "(s) available " + " after removing");
+
+            return inBasket;
+            }
         return 0;
     }
 

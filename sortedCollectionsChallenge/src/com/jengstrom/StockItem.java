@@ -54,7 +54,16 @@ public class StockItem implements Comparable<StockItem> {
     }
 
     public void reserveStock(int quantity) {
-        if((this.quantityAvailable() - this.quantityReserved) <= this.quantityAvailable()) {
+        if(quantity <= quantityAvailable()) {
+            this.quantityReserved += quantity;
+        } else {
+            System.out.println("Unable to reserve this quantity");
+            System.out.println("Current item availability: " + (this.quantityInStock - this.quantityReserved));
+        }
+    }
+
+    public void unreserveStock(int quantity) {
+        if((this.quantityReserved() + quantity) <= this.quantityInStock()) {
             this.quantityReserved += quantity;
         } else {
             System.out.println("Unable to reserve this quantity");

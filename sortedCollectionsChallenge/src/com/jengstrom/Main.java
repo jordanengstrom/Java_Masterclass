@@ -1,7 +1,5 @@
 package com.jengstrom;
 
-import java.util.Map;
-
 public class Main {
     private static StockList stockList = new StockList();
 
@@ -75,24 +73,17 @@ public class Main {
 //            System.out.println(price.getKey() + " costs " + price.getValue());
 //        }
 
-        jordansBasket.addToBasket(stockList.get("vase"), 40);
-        System.out.println(stockList);
+        jordansBasket.toOrFromBasket(stockList.get("vase"), 40);
+        System.out.println("Vases in stock: " + stockList.get("vase").quantityInStock());
+        System.out.println("Vases reserved: " + stockList.get("vase").quantityReserved());
+        System.out.println("Vases available to reserve: " + stockList.get("vase").quantityAvailable());
 
-        System.out.println("Vases in stock now: ");
-        System.out.println(stockList.get("vase").quantityInStock());
-        System.out.println("Vases reserved: ");
-        System.out.println(stockList.get("vase").quantityReserved());
+        jordansBasket.toOrFromBasket(stockList.get("vase"), -5);
+        System.out.println("Vases in stock: " + stockList.get("vase").quantityInStock());
+        System.out.println("Vases reserved: " + stockList.get("vase").quantityReserved());
+        System.out.println("Vases available to reserve: " + stockList.get("vase").quantityAvailable());
 
-        jordansBasket.addToBasket(stockList.get("vase"), -10);
-        System.out.println("Vases reserved: ");
-        System.out.println(stockList.get("vase").quantityReserved());
-        System.out.println(stockList);
-
-        jordansBasket.checkout(jordansBasket.Items());
-
-         Basket newBasket = new Basket("newBasket");
-        System.out.println("Vases in stock now: ");
-        System.out.println(stockList.get("vase").quantityInStock());
+//        System.out.println(stockList);
 
     }
 
@@ -104,7 +95,7 @@ public class Main {
             return 0;
         }
         if(stockList.sellStock(item, quantity) != 0) {
-            basket.addToBasket(stockItem, quantity);
+            basket.toOrFromBasket(stockItem, quantity);
             return quantity;
         }
         return 0;
