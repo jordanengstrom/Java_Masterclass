@@ -4,8 +4,8 @@ package com.jengstrom;
 public class StockItem implements Comparable<StockItem> {
     private final String name;
     private double price;
-    private int quantityReserved;
-    private int quantityInStock; // can be initialized later
+    private static int quantityReserved;
+    private static int quantityInStock; // can be initialized later
 
     public StockItem(String name, double price) {
         this.name = name;

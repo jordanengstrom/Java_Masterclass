@@ -15,9 +15,25 @@ public class Basket {
 
     public int addToBasket(StockItem item, int quantity) {
         if ((item != null) && (quantity > 0)){
+            System.out.println("There are " + item.quantityInStock() +
+                    " " + item.getName() + "(s)" + " before reserving");
             int inBasket = list.getOrDefault(item, 0);
+            item.reserveStock(quantity);
             list.put(item, inBasket + quantity);
+            System.out.println("There are " + item.quantityInStock() +
+                    " " + item.getName() + "(s)" + " after reserving");
             return inBasket;
+        }
+        return 0;
+    }
+
+    public int removeFromBasket(StockItem item, int quantity) {
+        if((item != null) && (Math.abs(quantity) < item.quantityInStock()) && (quantity < 0)) {
+            System.out.println("There are " + item.quantityReserved() + " of this item in your basket before " +
+                               "unreserving");
+            item.reserveStock(quantity);
+            list.remove(item, quantity);
+            return list.getOrDefault(item, 0);
         }
         return 0;
     }
@@ -27,9 +43,13 @@ public class Basket {
     }
 
     public void checkout(Map<StockItem, Integer> list) {
-        System.out.println("Now checking out");
-        for(Map.Entry<StockItem, Integer> item : list.entrySet()) {
-            item.getKey().adjustStock(item.getValue() * -1);
+        if (list.size() > 0) {
+            System.out.println("Now checking out");
+            for (Map.Entry<StockItem, Integer> item : list.entrySet()) {
+                item.getKey().adjustStock(item.getValue() * -1);
+            }
+        } else {
+            System.out.println("There are no items in your list to checkout");
         }
     }
 
