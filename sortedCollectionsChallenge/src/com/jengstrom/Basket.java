@@ -14,26 +14,19 @@ public class Basket {
     }
 
     public int addToBasket(StockItem item, int quantity) {
-        if ((item != null) && (quantity > 0)){
+        if ((item != null) && (Math.abs(quantity) > 0) && Math.abs(quantity) <= item.quantityInStock()){
             System.out.println("There are " + item.quantityInStock() +
                     " " + item.getName() + "(s)" + " before reserving");
             int inBasket = list.getOrDefault(item, 0);
             item.reserveStock(quantity);
-            list.put(item, inBasket + quantity);
-            System.out.println("There are " + item.quantityInStock() +
-                    " " + item.getName() + "(s)" + " after reserving");
+            if(quantity > 0) {
+                list.put(item, inBasket + quantity);
+                System.out.println("There are " + item.quantityInStock() +
+                        " " + item.getName() + "(s)" + " after reserving");
+            } else {
+                list.remove(item, inBasket + quantity);
+            }
             return inBasket;
-        }
-        return 0;
-    }
-
-    public int removeFromBasket(StockItem item, int quantity) {
-        if((item != null) && (Math.abs(quantity) < item.quantityInStock()) && (quantity < 0)) {
-            System.out.println("There are " + item.quantityReserved() + " of this item in your basket before " +
-                               "unreserving");
-            item.reserveStock(quantity);
-            list.remove(item, quantity);
-            return list.getOrDefault(item, 0);
         }
         return 0;
     }
@@ -46,7 +39,7 @@ public class Basket {
         if (list.size() > 0) {
             System.out.println("Now checking out");
             for (Map.Entry<StockItem, Integer> item : list.entrySet()) {
-                item.getKey().adjustStock(item.getValue() * -1);
+                item.getKey().adjustStock((item.getKey().quantityReserved() * -1));
             }
         } else {
             System.out.println("There are no items in your list to checkout");

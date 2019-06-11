@@ -29,7 +29,11 @@ public class StockItem implements Comparable<StockItem> {
     }
 
     public int quantityInStock() {
-        return quantityInStock - quantityReserved;
+        return quantityInStock;
+    }
+
+    public int quantityAvailable() {
+        return (quantityInStock - quantityReserved);
     }
 
     public int quantityReserved() {
@@ -44,13 +48,13 @@ public class StockItem implements Comparable<StockItem> {
 
     public void adjustStock(int quantity){
         int newQuantity = this.quantityInStock + quantity;
-        if(newQuantity >= 0) {
+        if(Math.abs(newQuantity) >= 0) {
             this.quantityInStock = newQuantity;
         }
     }
 
     public void reserveStock(int quantity) {
-        if((this.quantityInStock - this.quantityReserved) >= this.quantityReserved) {
+        if((this.quantityAvailable() - this.quantityReserved) <= this.quantityAvailable()) {
             this.quantityReserved += quantity;
         } else {
             System.out.println("Unable to reserve this quantity");

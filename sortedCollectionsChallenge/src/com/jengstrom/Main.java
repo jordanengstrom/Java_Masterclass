@@ -6,37 +6,37 @@ public class Main {
     private static StockList stockList = new StockList();
 
     public static void main(String[] args) {
-        StockItem temp = new StockItem("bread", 0.86, 100);
-        stockList.addStock(temp);
+//        StockItem temp = new StockItem("bread", 0.86, 100);
+//        stockList.addStock(temp);
 
-        temp = new StockItem("cake", 1.10, 7);
-        stockList.addStock(temp);
+//        temp = new StockItem("cake", 1.10, 7);
+//        stockList.addStock(temp);
+//
+//        temp = new StockItem("car", 12.50, 2);
+//        stockList.addStock(temp);
+//
+//        temp = new StockItem("chair", 62.00, 10);
+//        stockList.addStock(temp);
+//
+//        temp = new StockItem("cup", 0.50, 200);
+//        stockList.addStock(temp);
+//        temp = new StockItem("cup", 0.45, 7);
+//        stockList.addStock(temp);
+//
+//
+//        temp = new StockItem("door", 72.95, 4);
+//        stockList.addStock(temp);
+//
+//        temp = new StockItem("juice", 2.50, 36);
+//        stockList.addStock(temp);
+//
+//        temp = new StockItem("phone", 96.99, 35);
+//        stockList.addStock(temp);
+//
+//        temp = new StockItem("towel", 2.40, 80);
+//        stockList.addStock(temp);
 
-        temp = new StockItem("car", 12.50, 2);
-        stockList.addStock(temp);
-
-        temp = new StockItem("chair", 62.00, 10);
-        stockList.addStock(temp);
-
-        temp = new StockItem("cup", 0.50, 200);
-        stockList.addStock(temp);
-        temp = new StockItem("cup", 0.45, 7);
-        stockList.addStock(temp);
-
-
-        temp = new StockItem("door", 72.95, 4);
-        stockList.addStock(temp);
-
-        temp = new StockItem("juice", 2.50, 36);
-        stockList.addStock(temp);
-
-        temp = new StockItem("phone", 96.99, 35);
-        stockList.addStock(temp);
-
-        temp = new StockItem("towel", 2.40, 80);
-        stockList.addStock(temp);
-
-        temp = new StockItem("vase", 8.76, 40);
+        StockItem temp = new StockItem("vase", 8.76, 40);
         stockList.addStock(temp);
 
 //        System.out.println(stockList);
@@ -82,14 +82,18 @@ public class Main {
         System.out.println(stockList.get("vase").quantityInStock());
         System.out.println("Vases reserved: ");
         System.out.println(stockList.get("vase").quantityReserved());
-        jordansBasket.removeFromBasket(stockList.get("vase"), -40);
-        System.out.println(stockList);
 
-        jordansBasket.removeFromBasket(stockList.get("vase"), -5);
-        System.out.println("Vases in stock now: ");
-        System.out.println(stockList.get("vase").quantityInStock());
+        jordansBasket.addToBasket(stockList.get("vase"), -10);
         System.out.println("Vases reserved: ");
         System.out.println(stockList.get("vase").quantityReserved());
+        System.out.println(stockList);
+
+        jordansBasket.checkout(jordansBasket.Items());
+
+         Basket newBasket = new Basket("newBasket");
+        System.out.println("Vases in stock now: ");
+        System.out.println(stockList.get("vase").quantityInStock());
+
     }
 
     public static int sellItem(Basket basket, String item, int quantity) {
