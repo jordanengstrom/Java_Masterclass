@@ -23,7 +23,8 @@ public class Basket {
             System.out.println("There are " + item.quantityAvailable() +
                                " " + item.getName() + "(s) available " + " after reserving");
             return inBasket;
-        } else if( (item != null) && (quantity < 0)) {
+        } else if((item != null) && (quantity < 0) &&
+                  ((quantity)*(-1) <= item.quantityReserved())) {
             int inBasket = list.getOrDefault(item, 0);
             System.out.println("There are " + item.quantityAvailable() +
                                " " + item.getName() + "(s) available" + " before removing");
@@ -34,8 +35,10 @@ public class Basket {
                                " " + item.getName() + "(s) available " + " after removing");
             int newInBasket = list.getOrDefault(item, 0);
             return newInBasket;
-            }
-        return 0;
+            } else {
+            System.out.println("toOrFromBasekt method failed");
+            return 0;
+        }
     }
 
     public Map<StockItem, Integer> Items() {

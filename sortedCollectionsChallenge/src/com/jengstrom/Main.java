@@ -73,15 +73,19 @@ public class Main {
 //            System.out.println(price.getKey() + " costs " + price.getValue());
 //        }
 
-        jordansBasket.toOrFromBasket(stockList.get("vase"), 40);
+        jordansBasket.toOrFromBasket(stockList.get("vase"), 30);
         System.out.println("Vases in stock: " + stockList.get("vase").quantityInStock());
         System.out.println("Vases reserved: " + stockList.get("vase").quantityReserved());
         System.out.println("Vases available to reserve: " + stockList.get("vase").quantityAvailable());
 
-        jordansBasket.toOrFromBasket(stockList.get("vase"), -5);
-        System.out.println("Vases in stock: " + stockList.get("vase").quantityInStock());
-        System.out.println("Vases reserved: " + stockList.get("vase").quantityReserved());
-        System.out.println("Vases available to reserve: " + stockList.get("vase").quantityAvailable());
+        jordansBasket.toOrFromBasket(stockList.get("vase"), -31);
+
+//        jordansBasket.toOrFromBasket(stockList.get("vase"), -5);
+//        System.out.println("Vases in stock: " + stockList.get("vase").quantityInStock());
+//        System.out.println("Vases reserved: " + stockList.get("vase").quantityReserved());
+//        System.out.println("Vases available to reserve: " + stockList.get("vase").quantityAvailable());
+//
+//        jordansBasket.toOrFromBasket(stockList.get("vase"), -40);
 
     }
 
