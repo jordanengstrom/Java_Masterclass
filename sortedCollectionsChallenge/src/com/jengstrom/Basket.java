@@ -28,11 +28,12 @@ public class Basket {
             System.out.println("There are " + item.quantityAvailable() +
                                " " + item.getName() + "(s) available" + " before removing");
 
-            list.remove(item, inBasket + quantity);
+            list.replace(item, inBasket, inBasket + quantity);
+            item.reserveStock(quantity);
             System.out.println("There are " + item.quantityAvailable() +
                                " " + item.getName() + "(s) available " + " after removing");
-
-            return inBasket;
+            int newInBasket = list.getOrDefault(item, 0);
+            return newInBasket;
             }
         return 0;
     }

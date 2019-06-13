@@ -83,8 +83,6 @@ public class Main {
         System.out.println("Vases reserved: " + stockList.get("vase").quantityReserved());
         System.out.println("Vases available to reserve: " + stockList.get("vase").quantityAvailable());
 
-//        System.out.println(stockList);
-
     }
 
     public static int sellItem(Basket basket, String item, int quantity) {

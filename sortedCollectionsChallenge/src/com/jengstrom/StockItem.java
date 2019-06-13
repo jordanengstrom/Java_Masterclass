@@ -29,15 +29,15 @@ public class StockItem implements Comparable<StockItem> {
     }
 
     public int quantityInStock() {
-        return quantityInStock;
+        return this.quantityInStock;
     }
 
     public int quantityAvailable() {
-        return (quantityInStock - quantityReserved);
+        return (this.quantityInStock - this.quantityReserved);
     }
 
     public int quantityReserved() {
-        return quantityReserved;
+        return this.quantityReserved;
     }
 
     public void setPrice(double price) {
