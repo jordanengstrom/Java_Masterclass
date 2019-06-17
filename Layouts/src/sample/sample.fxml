@@ -1,0 +1,46 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.HBox?>
+<!--<HBox fx:controller="sample.Controller"-->
+<!--      xmlns:fx="http://javafx.com/fxml" alignment="bottom_right"-->
+<!--    style="-fx-border-color: red; -fx-border-width: 3; -fx-border-style: dashed"-->
+<!--    spacing="10">-->
+<!--    <padding>-->
+<!--        <Insets bottom="10" right="10"></Insets>-->
+<!--    </padding>-->
+<!--    <Button text="OK" prefWidth="90"></Button>-->
+<!--    <Button text="Cancel" prefWidth="90"></Button>-->
+<!--    <Button text="Help" prefWidth="90"></Button>-->
+<!--</HBox>-->
+
+
+<BorderPane fx:controller="sample.Controller"
+            xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <Label text="This label is in the top position" alignment="CENTER" BorderPane.alignment="CENTER"
+            style="-fx-border-color: blue; -fx-border-width: 3; -fx-border-style: dashed"></Label>
+    </top>
+    <left>
+        <Label text="This label is in the left position" alignment="CENTER"></Label>
+    </left>
+    <right>
+        <Label text="This label is in the right position" alignment="CENTER"></Label>
+    </right>
+    <center>
+        <Label text="This label is in the center position and has really looooooooooooooooooooooooooooooooooooooooooooong text"></Label>
+    </center>
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <padding>
+                <Insets bottom="10" right="10"></Insets>
+            </padding>
+            <Button text="OK" prefWidth="90"></Button>
+            <Button text="Cancel" prefWidth="90"></Button>
+            <Button text="Help" prefWidth="90"></Button>
+        </HBox>
+    </bottom>
+</BorderPane>

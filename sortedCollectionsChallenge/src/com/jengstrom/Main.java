@@ -28,13 +28,13 @@ public class Main {
 //        temp = new StockItem("juice", 2.50, 36);
 //        stockList.addStock(temp);
 //
-//        temp = new StockItem("phone", 96.99, 35);
-//        stockList.addStock(temp);
-//
-//        temp = new StockItem("towel", 2.40, 80);
-//        stockList.addStock(temp);
+        StockItem temp = new StockItem("phone", 96.99, 35);
+        stockList.addStock(temp);
 
-        StockItem temp = new StockItem("vase", 8.76, 40);
+        temp = new StockItem("towel", 2.40, 80);
+        stockList.addStock(temp);
+
+        temp = new StockItem("vase", 8.76, 40);
         stockList.addStock(temp);
 
 //        System.out.println(stockList);
@@ -78,14 +78,10 @@ public class Main {
         System.out.println("Vases reserved: " + stockList.get("vase").quantityReserved());
         System.out.println("Vases available to reserve: " + stockList.get("vase").quantityAvailable());
 
-        jordansBasket.toOrFromBasket(stockList.get("vase"), -31);
-
-//        jordansBasket.toOrFromBasket(stockList.get("vase"), -5);
-//        System.out.println("Vases in stock: " + stockList.get("vase").quantityInStock());
-//        System.out.println("Vases reserved: " + stockList.get("vase").quantityReserved());
-//        System.out.println("Vases available to reserve: " + stockList.get("vase").quantityAvailable());
-//
-//        jordansBasket.toOrFromBasket(stockList.get("vase"), -40);
+        jordansBasket.checkout(jordansBasket.Items());
+        System.out.println("Vases in stock: " + stockList.get("vase").quantityInStock());
+        System.out.println("Vases reserved: " + stockList.get("vase").quantityReserved());
+        System.out.println("Vases available to reserve: " + stockList.get("vase").quantityAvailable());
 
     }
 

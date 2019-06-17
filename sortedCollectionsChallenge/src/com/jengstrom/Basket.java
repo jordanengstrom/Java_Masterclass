@@ -30,7 +30,7 @@ public class Basket {
                                " " + item.getName() + "(s) available" + " before removing");
 
             list.replace(item, inBasket, inBasket + quantity);
-            item.reserveStock(quantity);
+            item.unreserveStock(quantity);
             System.out.println("There are " + item.quantityAvailable() +
                                " " + item.getName() + "(s) available " + " after removing");
             int newInBasket = list.getOrDefault(item, 0);
@@ -49,7 +49,8 @@ public class Basket {
         if (list.size() > 0) {
             System.out.println("Now checking out");
             for (Map.Entry<StockItem, Integer> item : list.entrySet()) {
-                item.getKey().adjustStock((item.getKey().quantityReserved() * -1));
+                item.getKey().adjustStock((item.getKey().quantityReserved() * (-1)));
+                item.getKey().unreserveStock(item.getKey().quantityReserved() * (-1));
             }
         } else {
             System.out.println("There are no items in your list to checkout");
