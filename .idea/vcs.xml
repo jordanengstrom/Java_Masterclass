@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/AdventureRandom" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Counter" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Exceptions" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/InputOutput" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/JavaFXApp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/MyContacts" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Threads" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/TodoList" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/samples" vcs="Git" />
+  </component>
+</project>
