@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contacts>
+<contact>
+	<first_name>Jordan</first_name>
+	<last_name>Engstrom</last_name>
+	<phone_number>208-861-7679</phone_number>
+	<notes>I love Benny</notes>
+</contact>
+<contact>
+	<first_name>Birdy</first_name>
+	<last_name>Ruis</last_name>
+	<phone_number>9876543</phone_number>
+	<notes>my hot boyfriend </notes>
+</contact>
+<contact>
+	<first_name>Benny</first_name>
+	<last_name>Engstrom</last_name>
+	<phone_number>telepathy</phone_number>
+	<notes>".... sneak"</notes>
+</contact>
+<contact>
+	<first_name>test</first_name>
+	<last_name>test</last_name>
+	<phone_number>2345678</phone_number>
+	<notes>what if we add a rrrrrreeeeeeeeeeeaaaaaaaaaaaaaaaalllllllllllllllllyyyyyyyyyyyyyyy llllllooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong noooooote</notes>
+</contact>
+</contacts>
