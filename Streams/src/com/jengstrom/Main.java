@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -36,13 +38,13 @@ public class Main {
         someBingoNumbers
                 .stream()
                 .map(String::toUpperCase)
-                .filter(s->s.startsWith("G"))
+                .filter(s -> s.startsWith("G"))
                 .sorted()
                 .forEach(System.out::println);
-                // .forEach here is called a terminal operation
-                // a terminal operation returns a void or non-stream result
-                // the stream ends on terminal operations
-                // intermediate operations return stream results
+        // .forEach here is called a terminal operation
+        // a terminal operation returns a void or non-stream result
+        // the stream ends on terminal operations
+        // intermediate operations return stream results
 
         Stream<String> ioNumberStream = Stream.of("I26", "I17", "I29", "O71");
         Stream<String> inNumberStream = Stream.of("N40", "N36", "I26", "I17", "I29", "O71");
@@ -84,12 +86,12 @@ public class Main {
         List<String> sortedGNumbers = someBingoNumbers
                 .stream()
                 .map(String::toUpperCase)
-                .filter(s-> s.startsWith("G"))
+                .filter(s -> s.startsWith("G"))
                 .sorted()
                 .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
 
 
-        for(String s : sortedGNumbers) {
+        for (String s : sortedGNumbers) {
             System.out.println(s);
         }
         Map<Integer, List<Employee>> groupedByAge = departments.stream()
@@ -98,14 +100,18 @@ public class Main {
 
         departments.stream()
                 .flatMap(department -> department.getEmployees().stream())
-                .reduce((e1, e2)-> e1.getAge() < e2.getAge() ? e1 : e2)
+                .reduce((e1, e2) -> e1.getAge() < e2.getAge() ? e1 : e2)
                 .ifPresent(System.out::println);
 
         Stream.of("ABC", "AC", "BAA", "CCCC", "XY", "ST")
                 .filter(s -> {
                     System.out.println(s);
-                    return  s.length() == 3;
+                    return s.length() == 3;
                 })
                 .count();
+
+
     }
 }
+
+
