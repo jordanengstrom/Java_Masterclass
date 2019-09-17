@@ -2,6 +2,9 @@ package com.jengstrom;
 
 import jdk.swing.interop.SwingInterOpUtils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -64,9 +67,76 @@ public class Main {
 //      \\W replaces anything BUT a-z, A-Z, 0-9, and _
 //        System.out.println(newAlphanumeric.replaceAll("\\w", "X"));
 //        System.out.println(hasWhitespace.replaceAll("\\w", "X"));
-        
+
 //      \\b replaces word boundaries
-        System.out.println(hasWhitespace.replaceAll("\\b", "X"));
+//        System.out.println(hasWhitespace.replaceAll("\\b", "X"));
+
+//      quantifiers:
+//      {3} exact number of e's,
+//      {2, 5} at least 2 e's but no more than 5
+//      + one or more e,
+//      * 0 or more e's
+
+//        System.out.println(alphanumeric.replaceAll("^abcDe{3}", "YYY"));
+//        System.out.println(alphanumeric.replaceAll("^abcDe+", "YYY"));
+//        System.out.println(alphanumeric.replaceAll("^abcDe*", "YYY"));
+//        System.out.println(alphanumeric.replaceAll("^abcDe{2,5}", "YYY"));
+
+//      replace all occurrences of h followed by any i's followed by at least 1 j with a Y
+        String thirdAlphanumericString = "abcDeeeF12Ghhiiiijkl99z";
+//        System.out.println(thirdAlphanumericString);
+//        System.out.println(thirdAlphanumericString.replaceAll("h+i*j", "Y"));
+
+
+//      find all occurrences of an <h2> tag in html text
+        StringBuilder htmlText = new StringBuilder("<h1>My Heading</h1>");
+        htmlText.append("<h2>Sub-heading</h2>");
+        htmlText.append("<p>This is a paragraph about something </p>");
+        htmlText.append("<p>This is another paragraph about something else.</p>");
+        htmlText.append("<h2>Summary</h2>");
+        htmlText.append("<p>Here is the summary.</p>");
+
+//        String h2Pattern = ".*<h2>.*";
+        String h2Pattern = "(<h2>)";
+        Pattern pattern = Pattern.compile(h2Pattern);
+//      Pattern pattern = Pattern.compile(h2Pattern, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+//      You can only use a matcher once, then you have to call .reset()
+        Matcher matcher = pattern.matcher(htmlText);
+        System.out.println(matcher.matches());
+
+
+//      How can we find the occurrences and where they occur?
+        matcher.reset();
+        int count = 0;
+        while(matcher.find()) {
+            count++;
+            System.out.println("Occurrence " + count + " : "+ matcher.start() + " to " + matcher.end());
+        }
+
+//      The * quantifier is a greedy quantifier, instead we want a lazy quantifier
+//      String h2GroupPattern = "(<h2>.*</h2>)";
+//      We want to use the lazy quantifier version of * which is *?
+        String h2GroupPattern = "(<h2>.*?</h2>)";
+
+        Pattern groupPattern = Pattern.compile(h2GroupPattern);
+        Matcher groupMatcher = groupPattern.matcher(htmlText);
+        System.out.println(groupMatcher.matches());
+        groupMatcher.reset();
+
+        while(groupMatcher.find()){
+            System.out.println("Occurrence: " + groupMatcher.group(1));
+        }
+
+        String h2TextGroups = "(<h2>)(.+?)(</h2>)";
+        Pattern h2TextPattern = Pattern.compile(h2TextGroups);
+        Matcher h2TextMatcher = h2TextPattern.matcher(htmlText);
+
+        while(h2TextMatcher.find()) {
+            System.out.println("Occurrence: " + h2TextMatcher.group(2));
+        }
+        
+
+//
 //
 //
     }
