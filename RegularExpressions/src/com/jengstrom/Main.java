@@ -102,7 +102,7 @@ public class Main {
 //      Pattern pattern = Pattern.compile(h2Pattern, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
 //      You can only use a matcher once, then you have to call .reset()
         Matcher matcher = pattern.matcher(htmlText);
-        System.out.println(matcher.matches());
+//        System.out.println(matcher.matches());
 
 
 //      How can we find the occurrences and where they occur?
@@ -110,7 +110,7 @@ public class Main {
         int count = 0;
         while(matcher.find()) {
             count++;
-            System.out.println("Occurrence " + count + " : "+ matcher.start() + " to " + matcher.end());
+//            System.out.println("Occurrence " + count + " : "+ matcher.start() + " to " + matcher.end());
         }
 
 //      The * quantifier is a greedy quantifier, instead we want a lazy quantifier
@@ -120,11 +120,11 @@ public class Main {
 
         Pattern groupPattern = Pattern.compile(h2GroupPattern);
         Matcher groupMatcher = groupPattern.matcher(htmlText);
-        System.out.println(groupMatcher.matches());
+//        System.out.println(groupMatcher.matches());
         groupMatcher.reset();
 
         while(groupMatcher.find()){
-            System.out.println("Occurrence: " + groupMatcher.group(1));
+//            System.out.println("Occurrence: " + groupMatcher.group(1));
         }
 
         String h2TextGroups = "(<h2>)(.+?)(</h2>)";
@@ -132,12 +132,52 @@ public class Main {
         Matcher h2TextMatcher = h2TextPattern.matcher(htmlText);
 
         while(h2TextMatcher.find()) {
-            System.out.println("Occurrence: " + h2TextMatcher.group(2));
+//            System.out.println("Occurrence: " + h2TextMatcher.group(2));
         }
-        
 
-//
-//
-//
+//      "abc" means "a" and "b" and "c"
+//      [Hh]arry means "H" or "h"
+//        System.out.println("harry".replaceAll("[H|h]arry", "Larry"));
+//        System.out.println("Harry".replaceAll("[H|h]arry", "Larry"));
+
+//      [^abc] means NOT when in square brackets
+//      find all the t's that are NOT followed by v
+        String tvTest = "tstvtkt";
+//        String tNotVRegExp = "t[^v]";
+//      Using a "Negative Look Ahead Expression" instead:
+        String tNotVRegExp = "t(?!v)";
+//      All matches of t followed by v: (?=v) --> "Positive Look Ahead Expression"
+        Pattern tNotVPattern = Pattern.compile(tNotVRegExp);
+        Matcher tNotVMatcher = tNotVPattern.matcher(tvTest);
+
+        count = 0;
+        while(tNotVMatcher.find()) {
+            count++;
+//            System.out.println("Occurrence " + count + ": " + tNotVMatcher.start() + " to " + tNotVMatcher.end());
+        }
+//      Regex for US Phone Number:
+//      ^([\(]{1}[0-9]{3}[\)]{1}[ ]{1}[0-9]{3}[\-]{1}[0-9]{4})$
+        String phone1 = "1234567890"; // shouldn't match
+        String phone2 = "(123) 456-7890";  // matcch
+        String phone3 = "123 456-7890";  //shouldn't match
+        String phone4 = "(123)456-7890"; // shouldn't match
+
+        System.out.println("phone1 = " + phone1.matches("^([\\(]{1}[0-9]{3}[\\)]{1}[ ]{1}[0-9]{3}[\\-]{1}[0-9]{4})$"));
+        System.out.println("phone2 = " + phone2.matches("^([\\(]{1}[0-9]{3}[\\)]{1}[ ]{1}[0-9]{3}[\\-]{1}[0-9]{4})$"));
+        System.out.println("phone3 = " + phone3.matches("^([\\(]{1}[0-9]{3}[\\)]{1}[ ]{1}[0-9]{3}[\\-]{1}[0-9]{4})$"));
+        System.out.println("phone4 = " + phone4.matches("^([\\(]{1}[0-9]{3}[\\)]{1}[ ]{1}[0-9]{3}[\\-]{1}[0-9]{4})$"));
+
+//      Regex for general visa card numbers:
+//      ^4[0-9]{12}([0-9]{3})?$
+        String visa1 = "4444444444444"; // should match
+        String visa2 = "5444444444444"; // shouldn't match
+        String visa3 = "4444444444444444"; // should match
+        String visa4 = "4444"; // shouldn't match
+
+        System.out.println("visa1 " + visa1.matches("^4[0-9]{12}([0-9]{3})?$"));
+        System.out.println("visa2 " + visa2.matches("^4[0-9]{12}([0-9]{3})?$"));
+        System.out.println("visa3 " + visa3.matches("^4[0-9]{12}([0-9]{3})?$"));
+        System.out.println("visa4 " + visa4.matches("^4[0-9]{12}([0-9]{3})?$"));
+
     }
 }
