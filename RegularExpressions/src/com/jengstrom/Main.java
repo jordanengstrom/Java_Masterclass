@@ -30,7 +30,7 @@ public class Main {
 //        System.out.println(alphanumeric.replaceAll("[aei]", "X"));
 //        System.out.println(alphanumeric.replaceAll("[aei]", "I replaced a letter here"));
 
-//      Replace aei only if followed by an f or j
+//      Replace aei only if followed by an f or b
 //        System.out.println(alphanumeric.replaceAll("[aei][fb]", "X"));
 
 //      Look for harry and make upper case if not already
