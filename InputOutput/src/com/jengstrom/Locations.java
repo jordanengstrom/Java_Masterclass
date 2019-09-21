@@ -1,45 +1,43 @@
 package com.jengstrom;
 
-import java.io.*;
-import java.nio.Buffer;
-import java.util.*;
+import com.jengstrom.Location;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class Locations implements Map<Integer, Location> {
-    private static Map<Integer, Location> locations = new LinkedHashMap<Integer, Location>();
+    private static Map<Integer, Location> locations = new HashMap<Integer, Location>();
 
-    public static void main(String[] args) throws IOException {
-        try (ObjectOutputStream locFile = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("locations.dat")))) {
-            for (Location location : locations.values()) {
-                locFile.writeObject(location);
-            }
-        }
-    }
-
-    // 1. The first four bytes will contain the number of locations (bytes 0-3)
-    // 2. The next four bytes will contain the start offset of the location (bytes 4-7)
-    // 3. The next section of the file will contain the index (the index is 1692 bytes long. It will start at byte 8 and end at byte 1699)
-    // 4. The final section of the file will contain the location records (the data). It will start at byte 1700
-
+    // the static block is executed once when the Locactions class is loaded
     static {
-        try (ObjectInputStream locFile = new ObjectInputStream(new BufferedInputStream(new FileInputStream("locations.dat")))) {
-            boolean eof = false;
-            while (!eof) {
-                try {
-                    Location location = (Location) locFile.readObject();
-                    System.out.println("Reading location " + location.getLocationID() + " : " + location.getDescription());
-                    System.out.println("Found" + location.getExits().size() + " exits");
-                    locations.put(location.getLocationID(), location);
-                } catch (EOFException e) {
-                    eof = true;
-                }
-            }
-        } catch (InvalidClassException e) {
-            System.out.println("InvalidClassException " + e.getMessage());
-        } catch (IOException io) {
-            System.out.println("IO Exception " + io.getMessage());
-        } catch (ClassNotFoundException e) {
-            System.out.println("ClassNotFoundException " + e.getMessage());
-        }
+        Map<String, Integer> tempExit = new HashMap<String, Integer>();
+        locations.put(0, new Location(0, "You are sitting in front of a computer learning Java", tempExit));
+
+        tempExit = new HashMap<String, Integer>();
+        tempExit.put("W", 2);
+        tempExit.put("E", 3);
+        tempExit.put("S", 4);
+        tempExit.put("N", 5);
+        locations.put(1, new Location(1, "You are standing at the end of a road before a small brick building", tempExit));
+
+        tempExit = new HashMap<String, Integer>();
+        tempExit.put("N", 5);
+        locations.put(2, new Location(2, "You are at the top of a hill", tempExit));
+
+        tempExit = new HashMap<String, Integer>();
+        tempExit.put("W", 1);
+        locations.put(3, new Location(3, "You are inside a building, a well house for a small spring", tempExit));
+
+        tempExit = new HashMap<String, Integer>();
+        tempExit.put("N", 1);
+        tempExit.put("W", 2);
+        locations.put(4, new Location(4, "You are in a valley beside a stream", tempExit));
+
+        tempExit = new HashMap<String, Integer>();
+        tempExit.put("S", 1);
+        tempExit.put("W", 2);
+        locations.put(5, new Location(5, "You are in the forest", tempExit));
     }
 
     @Override
@@ -59,7 +57,7 @@ public class Locations implements Map<Integer, Location> {
 
     @Override
     public boolean containsValue(Object value) {
-        return locations.containsValue(value);
+        return locations.containsKey(value);
     }
 
     @Override

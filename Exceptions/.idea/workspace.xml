@@ -8,6 +8,24 @@
       <change beforePath="$PROJECT_DIR$/out/production/Exceptions/com/jengstrom/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Exceptions/com/jengstrom/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jengstrom/Example.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jengstrom/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jengstrom/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../InputOutput/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../InputOutput/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../InputOutput/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/directions.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/directions_big.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/locations.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/locations.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/locations_big.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/out/production/InputOutput/com/jengstrom/Location.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/out/production/InputOutput/com/jengstrom/Locations.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/out/production/InputOutput/com/jengstrom/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/out/production/InputOutput/com/jengstrom/ShiftInt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/src/com/jengstrom/Location.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/src/com/jengstrom/Locations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/src/com/jengstrom/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../InputOutput/src/com/jengstrom/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InputOutput/src/com/jengstrom/ShiftInt.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../JavaFXApp" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaFXApp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TodoList" beforeDir="false" afterPath="$PROJECT_DIR$/../TodoList" afterDir="false" />
     </list>
@@ -36,6 +54,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -109,11 +128,16 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="masterDetails">
     <states>
